@@ -9,9 +9,9 @@ void find(int arr[], int n, int *x, int *y){
     for(int i = 0; i < n; i++){
         exor=(arr[i])^exor;
     }
-    set_bit= exor & ~(exor-1);
+    set_bit= exor & ~(exor-1);  // to find the rigth most se bit of the no.
     for(int i = 0; i < n; i++){
-        if(arr[i] & set_bit){
+        if(arr[i] & set_bit){  // to sort no.s in two different groups among given array
             *x=*x^arr[i];
         }else{
             *y=*y^arr[i];
