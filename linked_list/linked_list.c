@@ -4,8 +4,8 @@ struct Node
 {
     int data;
     struct Node *next;
-}
-*first=NULL;
+}; 
+struct Node *first = NULL;
 
 void create(int A[],int n)
 {
@@ -71,7 +71,6 @@ void Display(struct Node *p)
 
 int main()
 {
- 
     int A[]={10,20,30,40,50};
     create(A,5);
     
