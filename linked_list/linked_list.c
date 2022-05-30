@@ -34,8 +34,7 @@ int count(struct Node *p){
     return l;
 }
 
-void Insert(struct Node *p,int index,int x)
-{
+void Insert(struct Node *p,int index,int x){
     struct Node *t;
     int i;
     

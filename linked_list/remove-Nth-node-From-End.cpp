@@ -28,23 +28,25 @@ void create(int A[],int n)
 }
 
 node* removeNthFromEnd(node* head, int n) {
-        node *fast, *slow;
+        node *d, *fast, *slow;
         int cnt=0;
-        fast=head; slow=head;
+        d=new node;
+        d->next=head;
+        fast=d; slow=d;
         
-        while(fast!=NULL){
+        while(fast->next != NULL){
             cnt++;
-            if(cnt>n+1){        //TC= O(n), SC=O(1)
+            if(cnt>n){        //TC= O(n), SC=O(1)
                 slow=slow->next;
             }
             fast=fast->next;
         }
-        if(cnt==n){
-            node *first=head;
-            head=head->next;
-            delete(first);
-            return head;
-        }
+        // if(cnt==n){
+        //     node *first=d->next;
+        //     d->next=d->next->next;
+        //     delete(first);
+        //     return d->next;
+        // }
         // node *act;       //TC= O(2n), SC=O(1)
         // act=head;
         // for(int i=1;i<cnt-n;i++){
@@ -53,7 +55,7 @@ node* removeNthFromEnd(node* head, int n) {
         node *target=slow->next;
         slow->next=slow->next->next;
         delete(target);
-        return head;
+        return d->next;
     }
 
 int main()

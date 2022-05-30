@@ -63,9 +63,12 @@ node* mergeTwoLists(node* list1, node* list2) {
                 list1=list2;
                 list2=temp;
             }
-            reqd->data=list1->data;
-            link=reqd;
-        
+            
+            reqd->next=list1;
+            link=reqd->next;
+            // reqd->data=list1->data;
+            // link=reqd;
+
             list1=list1->next;
             while(list1!=NULL && list2!=NULL){
                 if(list1->data <= list2->data){
@@ -88,7 +91,8 @@ node* mergeTwoLists(node* list1, node* list2) {
             if(list2==NULL){
                 link->next=list1;
             }    
-        return reqd;
+        return reqd->next;
+        // return reqd;
     }
 
 int main()
