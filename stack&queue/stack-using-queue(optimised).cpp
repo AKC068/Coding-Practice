@@ -3,39 +3,38 @@ using namespace std;
 
 // using queue to implement stack - using fifo to perform lifo
 class MyStack {
-    queue<int> q1,q2;
-    // int cnt;
+    queue<int> q;
+    int cnt;
 public:
     MyStack() {
-       // cnt=0;
+        cnt=0;
     }
     
     void push(int x) {
-        q2.push(x);
-        while(!q1.empty()){
-            q2.push(q1.front());   //fifo
-            q1.pop();
+        q.push(x);
+        cnt++;
+        for(int i=1;i<=(cnt-1);i++){
+            q.push(q.front());
+            q.pop();
         }
-        queue<int> q = q1;
-        q1 = q2;
-        q2 = q;
     }
     
     int pop() {
         // if(q1.empty())
         //     return -1;
-        int val=q1.front();
-        q1.pop();
+        int val=q.front();
+        q.pop();
+        cnt--;
         return val;
     }
     
     int top() {
         // if(q1.empty())
         //     return -1;
-        return q1.front();
+        return q.front();
     }
     
     bool empty() {
-        return q1.empty();
+        return q.empty();
     }
 };

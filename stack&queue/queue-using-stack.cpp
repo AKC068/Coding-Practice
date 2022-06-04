@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// using stack to implement queue - using lifo to perform fifo
 class MyQueue {
     stack<int> s1,s2;
 public:
