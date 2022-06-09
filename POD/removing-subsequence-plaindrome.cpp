@@ -17,5 +17,3 @@ int removePalindromeSub(string s) {
         }
         return 1;
     }
-
-    
