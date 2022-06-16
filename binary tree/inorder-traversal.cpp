@@ -41,12 +41,27 @@ void create(vector<int> array, int n){
 
 vector<int> ans;
 vector<int> inorderTraversal(TreeNode* head) {
-        if(head==NULL){
-            return ans;
+        TreeNode* curr=head;
+    while(curr!=NULL){
+        if(curr->left==NULL){
+            ans.push_back(curr->val);
+            curr=curr->right; //        (3nd explanation)here while curr is going to curr->right we'll get the curr again. In this way it gets retured to its previous position. 
+            //      This line is actually for curr to point on its previous position, not on its actual right, as curr gets stored in curr->right. (next explanation above in last else case)
+        }else{
+            TreeNode* prev=curr->left;      
+            while(prev->right && prev->right != curr){
+                prev=prev->right;
+            }
+            if(prev->right==NULL){
+                prev->right=curr; //        (start of explanation)as the prev->right is pointing on curr, which means curr->left->right is pointing on curr itself and this gets stored which helps when curr in returing to its previous position. (next explanation below)
+                curr=curr->left; //        (2nd explanation)after curr is moved to next left, then there we will get curr in curr->right as it was stored. (next explanation above in 1st if case)
+            }else{
+                prev->right=NULL;   // As we have left prev->right pointing to curr, its necessary to remove this thread.
+                ans.push_back(curr->val);   // This curr is pointing at returned position which will be eventually root of that subtree.
+                curr=curr->right; //        (4th explanation)Now when it is returned, it will be pointing on its actual right.
+            }
         }
-        inorderTraversal(head->left);
-        ans.push_back(head->val);
-        inorderTraversal(head->right);
+    }
         return ans;
 }
 
