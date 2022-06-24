@@ -66,7 +66,7 @@ vector<int> inorderTraversal(TreeNode* head) {
 }
 
 int main(){
-    vector<int> array={1,2,3,NULL,NULL,4,5};
+    vector<int> array={1,2,NULL,NULL,3,4,5};
     // vector<int> array={1,2,3,4,5};
     int n = array.size();
     create(array,n);
